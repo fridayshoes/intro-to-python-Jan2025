@@ -72,6 +72,8 @@ def word_shortener(words_longer_than_nine):
   
   pass
     
+# My tests start
+
 print("Function - remove words with hyphen")
 print(remove_words_with_hyphen(example_words))
 
@@ -80,6 +82,8 @@ print(remove_short_words(example_words))
 
 print("Function - word_shortener")
 print(word_shortener(example_words))
+
+# My tests end
 
 check_that_these_are_equal(
   report_long_words([
