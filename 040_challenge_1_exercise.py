@@ -25,12 +25,61 @@ from lib.helpers import check_that_these_are_equal
 # "These words are quite long: nonbiological, antidisestablis..."
 
 # @TASK: Complete this exercise.
+example_words = [
+   'hello',
+   'nonbiological',
+   'Kay',
+   'this-is-a-long-word',
+   'antidisestablishmentarianism'
+ ]
+
 
 print("")
 print("Function: report_long_words")
 
 def report_long_words(words):
+  non_hyphen_words = remove_words_with_hyphen(words)
+  words_longer_than_nine = remove_short_words(non_hyphen_words)
+  words_shortened_to_fifthteen_or_less = word_shortener(words_longer_than_nine)
+  return (f"These words are quite long: {', '.join(words_shortened_to_fifthteen_or_less)}")
+
+def remove_words_with_hyphen(words):
+  non_hyphen_words = []
+  for word in words:
+    if "-" not in word:
+      non_hyphen_words.append(word)
+  return non_hyphen_words
+  
   pass
+
+def remove_short_words(non_hyphen_words):
+  words_longer_than_nine =[]
+  for word in non_hyphen_words:
+    if len(word) >= 10:
+      words_longer_than_nine.append(word)
+  return words_longer_than_nine
+  
+  pass
+
+def word_shortener(words_longer_than_nine):
+  words_shortened_to_fifthteen_or_less = []
+  for word in words_longer_than_nine:
+    if len(word) >= 15:
+      words_shortened_to_fifthteen_or_less.append((word[:15]) + "...")
+    else:
+      words_shortened_to_fifthteen_or_less.append(word)
+  return words_shortened_to_fifthteen_or_less  
+  
+  pass
+    
+print("Function - remove words with hyphen")
+print(remove_words_with_hyphen(example_words))
+
+print("Function remove_short_words")
+print(remove_short_words(example_words))
+
+print("Function - word_shortener")
+print(word_shortener(example_words))
 
 check_that_these_are_equal(
   report_long_words([
